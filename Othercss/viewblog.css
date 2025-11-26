@@ -1,0 +1,162 @@
+/* ------------------------------
+   📰 VIEW BLOG PAGE STYLING
+------------------------------ */
+body {
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(120deg, #101820, #16222a);
+  color: #fff;
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #ffcc70;
+  margin-bottom: 30px;
+}
+
+#blogDetails {
+  background: #1f2937;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  margin-bottom: 25px;
+}
+
+#blogDetails h2 {
+  color: #ffd580;
+  margin-bottom: 10px;
+}
+
+#blogDetails p {
+  line-height: 1.6;
+  color: #e5e7eb;
+}
+
+a {
+  color: #ffcc70;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Like Section */
+#likeSection {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+#likeBtn {
+  background: #ffcc70;
+  color: #1e293b;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#likeBtn:hover {
+  background: #ffd580;
+}
+
+/* Comment Section */
+#commentSection {
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#commentSection h3 {
+  color: #ffd580;
+  margin-bottom: 15px;
+}
+
+#commentForm textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  border: none;
+  padding: 12px;
+  resize: none;
+  background: #334155;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+#commentForm button {
+  background: #ffcc70;
+  color: #1e293b;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+#commentForm button:hover {
+  background: #ffd580;
+}
+
+.comment {
+  background: #111827;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+
+.comment p {
+  color: #e5e7eb;
+}
+
+.comment small {
+  display: block;
+  color: #9ca3af;
+  margin-top: 5px;
+}
+
+.reply {
+  margin-left: 20px;
+  color: #cbd5e1;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.replyBtn {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid #ffcc70;
+  color: #ffcc70;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.replyBtn:hover {
+  background: #ffcc70;
+  color: #1e293b;
+}
+
+/* Login Notice */
+#loginNotice {
+  text-align: center;
+  margin-top: 20px;
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+}

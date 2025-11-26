@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>My Medium-style Blog — Dark</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- TOP NAV -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <button id="menuBtn" class="icon-btn" aria-label="Open menu">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path
+                d="M3 6h18M3 12h18M3 18h18"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <a href="index.html" class="brand">
+            <div class="logo">MB</div>
+            <div class="brand-text">
+              <div class="brand-title">My Blog</div>
+              <div class="brand-sub">Stories</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="nav-right">
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" class="search-icon">
+              <path
+                d="M21 21l-4.35-4.35"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input
+              id="searchInput"
+              placeholder="Search posts..."
+              aria-label="Search posts"
+            />
+          </div>
+
+          <div class="nav-actions">
+            <!-- default buttons -->
+            <a href="./Otherhtml/login.html" class="btn btn-outline">Sign in</a>
+            <a href="./Otherhtml/signup.html" class="btn btn-primary">Get started</a>
+
+            <!-- user menu (hidden by default) -->
+            <div class="user-menu" style="display: none; position: relative">
+              <button id="userBtn" class="icon-btn" aria-label="User menu">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                  <path
+                    d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.2c-3.3 0-9.8 1.7-9.8 5V22h19.6v-2.8c0-3.3-6.5-5-9.8-5z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </button>
+              <div id="userDropdown" class="user-dropdown">
+                <div id="userDisplayName">Username</div>
+                <button class="dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24">
+                    <path
+                      d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zM12 14.2c-3.3 0-9.8 1.7-9.8 5V22h19.6v-2.8c0-3.3-6.5-5-9.8-5z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Profile
+                </button>
+                <button class="dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24">
+                    <path
+                      d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  My Posts
+                </button>
+                <button class="dropdown-item">
+                  <svg width="16" height="16" viewBox="0 0 24 24">
+                    <path
+                      d="M12 4v4M12 12v8M6 6l4 4 4-4"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                  Settings
+                </button>
+                <hr />
+                <button id="logoutBtn" class="dropdown-item logout">
+                  Logout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar" aria-hidden="true">
+      <div class="side-top">
+        <div class="side-brand">
+          <div class="logo small">MB</div>
+          <div style="margin-left: 8px"><strong>Menu</strong></div>
+        </div>
+        <button id="closeBtn" class="icon-btn" aria-label="Close menu">
+          <svg width="18" height="18" viewBox="0 0 24 24">
+            <path
+              d="M6 6l12 12M18 6L6 18"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <nav class="side-nav">
+        <a class="side-item" href="index.html"
+          ><svg width="18" height="18" viewBox="0 0 24 24">
+            <path
+              d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-8.5z"
+              stroke="currentColor"
+              stroke-width="0"
+              fill="currentColor"
+            /></svg
+          ><span>Home</span></a
+        >
+        <a class="side-item" href="Otherhtml/addblog.html"
+          ><svg width="18" height="18" viewBox="0 0 24 24">
+            <path
+              d="M12 20v-8"
+              stroke="currentColor"
+              stroke-width="0"
+              fill="currentColor"
+            /></svg
+          ><span>Write a story</span></a
+        >
+        <a class="side-item" href="Otherhtml/viewblog.html"
+          ><svg width="18" height="18" viewBox="0 0 24 24">
+            <path
+              d="M3 6h18M3 12h18M3 18h18"
+              stroke="currentColor"
+              stroke-width="0"
+              fill="currentColor"
+            /></svg
+          ><span>Latest</span></a
+        >
+        <a class="side-item" href="#"
+          ><svg width="18" height="18" viewBox="0 0 24 24">
+            <path
+              d="M12 2a10 10 0 100 20 10 10 0 000-20z"
+              stroke="currentColor"
+              stroke-width="0"
+              fill="currentColor"
+            /></svg
+          ><span>Topics</span></a
+        >
+        <a class="side-item" href="#"
+          ><svg width="18" height="18" viewBox="0 0 24 24">
+            <path
+              d="M12 2l3 7h7l-6 4 2 7-6-4-6 4 2-7-6-4h7z"
+              stroke="currentColor"
+              stroke-width="0"
+              fill="currentColor"
+            /></svg
+          ><span>About</span></a
+        >
+      </nav>
+
+      <div class="side-subscribe">
+        <div class="sub-title">Subscribe</div>
+        <input id="sidebarEmail" placeholder="Your email" />
+        <button id="sidebarSubscribe" class="btn btn-primary">Subscribe</button>
+      </div>
+    </aside>
+
+    <div id="backdrop" class="backdrop" hidden></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+      <section class="hero card">
+        <h1>Welcome — Read something worth your time</h1>
+        <p class="muted">
+          A Medium-like classic layout in dark mode. Sign in to write, like, and
+          comment.
+        </p>
+      </section>
+
+      <section id="articlesList" class="feed">
+        <div class="loading muted">Loading posts…</div>
+      </section>
+    </main>
+
+    <footer class="footer muted">© 2025 My Blog · Built with care</footer>
+
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
