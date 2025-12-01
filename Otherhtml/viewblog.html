@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Read post — My Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="../index.html" class="brand">
+          <div class="logo">MB</div>
+          <div class="brand-text"><div class="brand-title">My Blog</div><div class="brand-sub">Read</div></div>
+        </a>
+      </div>
+      <div class="nav-right"><a href="../index.html" class="link muted">Home</a></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="articleContainer" class="article-page card">
+      <p class="muted">Loading article…</p>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h3>Comments</h3>
+      <form id="commentForm">
+        <textarea id="commentText" rows="3" placeholder="Write a comment…" required></textarea>
+        <div style="display:flex;gap:10px;align-items:center">
+          <button class="primary" type="submit">Post</button>
+          <div class="muted">Sign in to comment</div>
+        </div>
+      </form>
+
+      <div id="commentsList" style="margin-top:12px"></div>
+    </section>
+  </main>
+
+  <script type="module" src="../script.js"></script>
+</body>
+</html>

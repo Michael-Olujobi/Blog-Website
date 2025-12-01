@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Create account — My Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left"><a href="../index.html" class="brand"><div class="logo">MB</div><div class="brand-text"><div class="brand-title">My Blog</div></div></a></div>
+      <div class="nav-right"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" style="max-width:560px;margin:0 auto">
+      <h2 style="font-family:'Merriweather',serif">Create account</h2>
+      <form id="signupForm">
+  <input type="text" id="signupUsername" placeholder="Username" required />
+  <input type="email" id="signupEmail" placeholder="Email" required />
+  <input type="password" id="signupPassword" placeholder="Password" required />
+  <button type="submit" class="btn primary">Sign Up</button>
+  <p>Don't have an account? <a href="./login.html">Sign in</a></p>
+  <div id="signupMsg" class="muted"></div>
+</form>
+
+    </section>
+  </main>
+
+  <script type="module" src="../script.js"></script>
+</body>
+</html>

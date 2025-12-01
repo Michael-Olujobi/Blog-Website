@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Write a story — My Blog</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        <a href="../index.html" class="brand">
+          <div class="logo">MB</div>
+          <div class="brand-text"><div class="brand-title">My Blog</div><div class="brand-sub">Write</div></div>
+        </a>
+      </div>
+      <div class="nav-right"><a href="../index.html" class="link muted">Home</a></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2 style="font-family:'Merriweather',serif">Write a story</h2>
+      <form id="blogForm">
+        <input id="title" placeholder="Title" required />
+        <input id="subtitle" placeholder="Subtitle (optional)" />
+        <textarea id="description" rows="10" placeholder="Write your story..." required></textarea>
+        <p id="message" class="muted"></p>
+        <div style="display:flex;gap:10px">
+          <button class="primary" type="submit">Publish</button>
+          <a href="../index.html" class="btn">Cancel</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="../script.js"></script>
+</body>
+</html>
