@@ -75,26 +75,18 @@ onAuthStateChanged(auth, async user => {
   }
 });
 
-function relocateSearch() {
-  const search = document.querySelector(".search");
-  const dropdown = document.querySelector("#userDropdown");
+const searchInputEl = document.getElementById('searchInput');
 
-  if (!search || !dropdown) return;
-
-  if (window.innerWidth <= 478) {
-    if (!dropdown.querySelector(".search")) {
-      dropdown.insertBefore(search, dropdown.children[1]); 
+if(searchInputEl){
+  searchInputEl.addEventListener('keydown', e => {
+    if(e.key === 'Enter'){
+      e.preventDefault();
+      const val = (searchInputEl.value||"").toLowerCase().trim();
+      loadArticles(val);
+      closeSearch();
     }
-  } else {
-    const navRight = document.querySelector(".nav-right");
-    if (navRight && !navRight.querySelector(".search")) {
-      navRight.insertBefore(search, navRight.children[0]);
-    }
-  }
+  });
 }
-
-relocateSearch();
-window.addEventListener("resize", relocateSearch);
 
 
 const userBtn = $("#userBtn");
@@ -230,6 +222,10 @@ async function loadArticles(searchTerm = "") {
     <a class="read-link" href="Otherhtml/viewblog.html?id=${post.id}">Read →</a>
   </div>
 `;
+        el.addEventListener('click', (e) => {
+          if (e.target.closest('a') || e.target.closest('button')) return;
+          window.location.href = `Otherhtml/viewblog.html?id=${post.id}`;
+        });
 articlesList.addEventListener("click", async e => {
   const btn = e.target.closest(".like-btn");
   if (!btn) return;
@@ -355,5 +351,32 @@ if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
     await signOut(auth);
     location.href = "../index.html";
+  });
+}
+
+const themeToggle = document.getElementById('themeToggle');
+function applyTheme(theme){
+  if(theme === 'light'){
+    document.body.classList.add('light');
+    if(themeToggle) themeToggle.innerText = '🌞';
+    if(themeToggle) themeToggle.setAttribute('aria-pressed','true');
+  } else {
+    document.body.classList.remove('light');
+    if(themeToggle) themeToggle.innerText = '🌙';
+    if(themeToggle) themeToggle.setAttribute('aria-pressed','false');
+  }
+}
+
+try{
+  const saved = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+  applyTheme(saved);
+}catch(e){
+}
+
+if(themeToggle){
+  themeToggle.addEventListener('click', ()=>{
+    const next = document.body.classList.contains('light') ? 'dark' : 'light';
+    applyTheme(next);
+    try{ localStorage.setItem('theme', next) }catch(e){}
   });
 }

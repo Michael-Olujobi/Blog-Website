@@ -1,6 +1,4 @@
-/* ------------------------------
-   📰 VIEW BLOG PAGE STYLING
------------------------------- */
+
 body {
   font-family: "Inter", sans-serif;
   background: linear-gradient(120deg, #101820, #16222a);
@@ -43,7 +41,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Like Section */
 #likeSection {
   display: flex;
   align-items: center;
@@ -66,7 +63,6 @@ a:hover {
   background: #ffd580;
 }
 
-/* Comment Section */
 #commentSection {
   background: #1e293b;
   padding: 25px;
@@ -146,7 +142,6 @@ a:hover {
   color: #1e293b;
 }
 
-/* Login Notice */
 #loginNotice {
   text-align: center;
   margin-top: 20px;
@@ -154,7 +149,6 @@ a:hover {
   font-weight: bold;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   body {
     padding: 20px;

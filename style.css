@@ -7,6 +7,7 @@
   --muted:#9aa1a6;
   --text:#f5f7f8;
   --border: rgba(255,255,255,0.04);
+  --border-hover: rgba(255,255,255,0.12);
   --accent:#ffffff;
   --maxw:920px;
   --sidebar-w:300px;
@@ -42,8 +43,40 @@ body{
 .brand-sub{ font-size:12px; color:var(--muted) }
 
 .icon-btn{ background:transparent; border:1px solid rgba(255,255,255,0.03); color:var(--text); width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; cursor:pointer }
-.search{ display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,0.02); background:rgba(255,255,255,0.01) }
-.search input{ background:transparent; border:none; outline:none; color:var(--text); width:220px; font-size:14px; }
+.search{ display:flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,0.01); position:relative }
+
+/* collapsed by default: input hidden (zero width/opacity). Opening `.search.open` expands it */
+.search input{ background:transparent; border:none; outline:none; color:var(--text); width:0; max-width:0; opacity:0; padding:0; font-size:14px; transition: width .18s ease, opacity .18s ease, padding .18s ease }
+.search.open input{ width:220px; max-width:420px; opacity:1; padding:6px 10px; border-radius:8px; border:1px solid var(--border); background:transparent; margin-left:6px }
+
+/* Compact search behaviour for small screens: show only icon, toggle expanded input */
+.search{ position:relative }
+.search-btn{ background:transparent; border:none; color:var(--text); display:inline-flex; align-items:center; justify-content:center; cursor:pointer; width:40px; height:40px; border-radius:8px }
+.search-btn:focus{ outline:2px solid rgba(0,0,0,0.08); }
+
+@media (max-width:420px){
+  /* on small screens open becomes an overlay below the header */
+  .search.open input{
+    display:block; position:absolute; right:8px; top:calc(100% + 8px);
+    width:200px; max-width:calc(100vw - 24px); background:var(--surface); color:var(--text);
+    border:1px solid var(--border); padding:8px 10px; border-radius:10px; z-index:120; box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    pointer-events:auto; opacity:1;
+  }
+  .search.open{ z-index:120 }
+}
+
+/* ensure search input style adapts in light mode as well */
+body.light .search.open input{ background:var(--card); border:1px solid var(--border); color:var(--text) }
+
+/* Main content search (visible by default) */
+.main-search{ margin:10px auto 6px; max-width:var(--maxw); padding:0 12px }
+.main-search .search{ width:100%; padding:6px 10px; align-items:center; border-radius:8px }
+.main-search .search input{ width:auto; flex:1; max-width:100%; opacity:1; padding:6px 8px; border-radius:0; border:none; background:transparent; margin-left:8px; color:var(--text) }
+
+@media(max-width:420px){
+  .main-search{ padding:0 12px }
+  .main-search .search input{ width:100%; }
+}
 
 .nav-right{ display:flex; align-items:center; gap:12px; flex:1; justify-content:flex-end }
 .link{ color:var(--muted); text-decoration:none; font-size:14px }
@@ -72,11 +105,28 @@ body{
 .container{ max-width:var(--maxw); margin:28px auto; padding:0 20px; display:flex; flex-direction:column; gap:20px; }
 
 .card{ background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0)); border-radius:var(--radius); border:1px solid var(--border); padding:28px; box-shadow: 0 8px 30px rgba(0,0,0,0.6) }
+
+/* Prominent auth card for login/signup forms: thick, theme-aware border */
+.auth-card{
+  border: 3px solid var(--border);
+  border-radius: 14px;
+  padding: 28px;
+  background: var(--card);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+  transition: box-shadow .18s ease, border-color .18s ease, transform .18s ease;
+}
+
+@media(max-width:480px){
+  .auth-card{ padding:18px; border-width:2px }
+}
+
+body.light .auth-card{ box-shadow: 0 6px 18px rgba(0,0,0,0.06); border-color: var(--border); }
 .hero h1{ font-family:"Merriweather", serif; font-size:36px; margin-bottom:8px; color:var(--text) }
 .muted{ color:var(--muted) }
 
 .feed{ display:flex; flex-direction:column; gap:18px; margin-top:6px }
 .article{ background:transparent; border-radius:10px; padding:18px; border:1px solid rgba(255,255,255,0.02); transition:transform .16s, box-shadow .16s; }
+.article{ cursor: pointer }
 .article:hover{ transform:translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.7) }
 .article h2{ font-family:"Merriweather", serif; font-size:20px; margin-bottom:8px; color:var(--text) }
 .article p{ color:var(--muted); margin-bottom:8px; line-height:1.6 }
@@ -102,11 +152,45 @@ button.primary{ background:var(--text); color:var(--bg); border:none; padding:10
   .logo{ width:40px; height:40px }
   .hero h1{ font-size:28px }
   .sidebar{ width:84%; left:-100% }
+
+@media (max-width:500px){
+  .nav-inner{ padding:10px 14px }
+  .logo{ width:42px; height:42px }
+  .search input{ width:90px }
+  .nav-right{ gap:8px }
+  .nav-actions{ gap:6px }
+  .btn{ padding:9px 12px; font-size:13px }
+  .icon-btn{ width:40px; height:40px }
+}
+
+@media (max-width:420px){
+  .nav-inner{ padding:8px 12px }
+  .logo{ width:38px; height:38px }
+  .brand-text{ display:none }
+  /* hide search inputs that are inside the header (.nav-inner) to avoid crowding; keep main-search visible */
+  .nav-inner .search input{ display:none }
+  .btn{ padding:8px 10px; font-size:12px }
+  .theme-toggle{ width:38px; height:38px }
+}
+
+@media (max-width:360px){
+  .nav-inner{ padding:8px 10px }
+  .logo{ width:34px; height:34px; font-size:13px }
+  .icon-btn, .theme-toggle{ width:36px; height:36px }
+  .btn{ padding:7px 8px; font-size:11px }
+}
+
+@media (max-width:320px){
+  .nav-inner{ padding:6px 8px }
+  .logo{ width:32px; height:32px }
+  .btn{ font-size:10px; padding:6px 8px }
+  .nav-right{ gap:6px }
+}
 }
 .btn { font-weight:600; border-radius:10px; padding:10px 16px; cursor:pointer; transition:all .2s ease; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; font-size:14px; white-space:nowrap; }
 .btn-primary { background:#ff6b6b; color:#fff; border:none; }
 .btn-primary:hover { background:#ff4c4c; }
-.btn-outline { background:transparent; border:1px solid #fff; color:#fff; }
+.btn-outline { background:transparent; border:1px solid var(--border); color:var(--text); }
 .btn-outline:hover { background:rgba(255,255,255,0.08); }
 
 .search input { width:180px; padding:6px 10px; font-size:14px; }
@@ -211,14 +295,14 @@ hr {
   align-items:center;
   gap:6px;
   background: rgba(255,255,255,0.02);
-  border:1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   padding:6px 12px;
   border-radius:8px;
   cursor:pointer;
   font-size:14px;
   font-weight:600;
   color: var(--text);
-  transition: all 0.2s ease;
+  transition: background .18s ease, transform .18s ease, border-color .18s ease;
 }
 
 .like-btn .heart-icon {
@@ -229,6 +313,7 @@ hr {
 .like-btn:hover {
   background: rgba(255,255,255,0.05);
   transform: translateY(-2px);
+  border-color: var(--border-hover);
 }
 
 .like-btn:hover .heart-icon {
@@ -251,18 +336,19 @@ hr {
   gap: 4px;
   padding: 6px 14px;
   background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
   color: var(--text);
-  transition: all 0.2s ease;
+  transition: background .18s ease, transform .18s ease, border-color .18s ease;
 }
 
 .read-link:hover {
   background: rgba(255,255,255,0.05);
-  transform: translateY(-2px);
+  transform: translateX(6px);
+  border-color: var(--border-hover);
 }
 
 @media(max-width:480px){
@@ -285,4 +371,30 @@ hr {
   .nav-actions{ gap:4px; flex:1 }
   .search input{ width:70px }
 }
+
+body.light{
+  --bg: #ffffff;
+  --surface: #f7f7f8;
+  --card: #ffffff;
+  --muted: #6b6b6b;
+  --text: #0b0b0b;
+  --border: rgba(0,0,0,0.06);
+  --border-hover: rgba(0,0,0,0.12);
+  --accent: #111827;
+}
+
+body{ transition: background .22s ease, color .22s ease }
+
+.theme-toggle{ width:44px; height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:10px; background:transparent; border:1px solid rgba(255,255,255,0.06); cursor:pointer; font-size:16px }
+body.light .theme-toggle{ border:1px solid rgba(0,0,0,0.06) }
+
+@media(max-width:480px){ .theme-toggle{ width:40px; height:40px } }
+@media(max-width:300px){ .theme-toggle{ width:36px; height:36px; font-size:14px } }
+
+body.light .sidebar { box-shadow: 0 8px 20px rgba(0,0,0,0.06); }
+body.light .card { box-shadow: 0 6px 14px rgba(0,0,0,0.05); }
+body.light .article { box-shadow: 0 4px 10px rgba(0,0,0,0.06); }
+body.light .article:hover { box-shadow: 0 8px 18px rgba(0,0,0,0.08); transform: translateY(-4px); }
+body.light .user-dropdown { box-shadow: 0 6px 18px rgba(0,0,0,0.06); }
+
 

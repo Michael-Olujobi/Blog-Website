@@ -25,30 +25,17 @@
             <div class="logo">T.M</div>
             <div class="brand-text">
               <div class="brand-title">Tech Medium</div>
-              <div class="brand-sub">Fresh Updates Delivered</div>
+              <div class="brand-sub">Tech News Delivered</div>
             </div>
           </a>
         </div>
 
         <div class="nav-right">
-          <div class="search">
-            <svg width="16" height="16" viewBox="0 0 24 24" class="search-icon">
-              <path
-                d="M21 21l-4.35-4.35"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-              />
-            </svg>
-            <input
-              id="searchInput"
-              placeholder="Search posts..."
-              aria-label="Search posts"
-            />
-          </div>
-
+        
+        </div>
           <div class="nav-actions">
-            <a href="./Otherhtml/login.html" class="btn btn-outline">Sign in</a>
+            <button id="themeToggle" class="icon-btn theme-toggle" aria-pressed="false" aria-label="Toggle color theme">🌙</button>
+            <a href="./Otherhtml/login.html" class="btn btn-outline">Log in</a>
             <a href="./Otherhtml/signup.html" class="btn btn-primary">Get started</a>
 
             <div class="user-menu" style="display: none; position: relative">
@@ -184,6 +171,16 @@
     <div id="backdrop" class="backdrop" hidden></div>
 
     <main class="container">
+      <div class="main-search">
+        <div class="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" class="search-icon" aria-hidden="true">
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            <circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.6" fill="none" />
+          </svg>
+          <input id="searchInput" placeholder="Search posts..." aria-label="Search posts" />
+        </div>
+      </div>
+
       <section class="hero card">
         <h1>Welcome To Tech Medium — Learn more about africa and worldwide tech</h1>
        
